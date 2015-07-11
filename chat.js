@@ -4,10 +4,13 @@ if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
 
+  var messagesLimit = 5;
+  Meteor.subscribe('messagesChannel', messagesLimit)
+
   Template.hello.helpers({
     messages: function() {
       return Messages.find({}, {
-        limit: 2
+        sort: { timestamp: -1 }
       });
     }
   });
@@ -37,9 +40,17 @@ if (Meteor.isServer) {
   Meteor.methods({
     addMessage: function(text) {
       Messages.insert({
-        text: text
+        text: text,
+        timestamp: new Date()
       });
     }
+  });
+
+  Meteor.publish('messagesChannel', function(limit) {
+      return Messages.find({}, {
+        limit: limit,
+        sort: { timestamp: -1 }
+      });
   });
 
 }
