@@ -15,3 +15,30 @@
 ## Start meteor
 
 1. `env RETHINK_URL=rethinkdb://localhost:28015/test meteor run`
+
+## Tooling (vim)
+
+1. Install tern_for_vim plugin
+2. Then, install meteor.js plugin for tern_for_vim via:
+
+```
+cd $HOME/.vim/bundle/tern_for_vim/node_modules/tern/plugin/
+wget https://raw.githubusercontent.com/Slava/tern-meteor/master/meteor.js
+```
+
+3. The meteor project should then include this `.tern-project` file in project root directory:
+
+```
+    {
+      "libs": [
+        "browser",
+        "jquery",
+        "underscore"
+      ],
+      "loadEagerly": [ "*.js", "*/*.js", "*/*/*.js", "*/*/*/*.js" ],
+      "dontLoad": [ ".meteor" ],
+      "plugins": {
+        "meteor": {}
+      }
+    }
+```

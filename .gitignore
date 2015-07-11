@@ -4,3 +4,5 @@
 .meteor/local
 .meteor/meteorite
 
+### RethinkDB
+rethinkdb_data
