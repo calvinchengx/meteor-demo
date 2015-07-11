@@ -17,8 +17,10 @@ if (Meteor.isClient) {
       var message = $('textarea').val();
       $('textarea').val('');
       console.log('inserting message: ', message);
-      Messages.insert({
-        text: message
+      Meteor.call('addMessage', message, function(err, result) {
+        if (err) {
+            console.log(err)
+        }
       });
     }
   });
@@ -28,6 +30,14 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
+  });
+
+  Meteor.methods({
+    addMessage: function(text) {
+      Messages.insert({
+        text: text
+      });
+    }
   });
 
 }
