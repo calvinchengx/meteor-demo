@@ -6,7 +6,9 @@ if (Meteor.isClient) {
 
   Template.hello.helpers({
     messages: function() {
-      return Messages.find();
+      return Messages.find({}, {
+        limit: 2
+      });
     }
   });
 
