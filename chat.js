@@ -1,10 +1,4 @@
-// if using mongodb
-// Persons = new Mongo.Collection('persons');
-
-// if using rethinkdb
-// create "persons" table manually in RethinkDB's web ui
-Persons = new Rethink.Table('persons');
-r = Rethink.r;
+Messages = new Mongo.Collection("messages");
 
 if (Meteor.isClient) {
   // counter starts at 0
@@ -23,6 +17,12 @@ if (Meteor.isClient) {
     'click .clickable': function () {
       // increment the counter when button is clicked
       Session.set('counter', Session.get('counter') + 1);
+      var message = $('textarea').val();
+      $('textarea').val('');
+      console.log('inserting message: ', message);
+      Messages.insert({
+        text: message
+      });
     }
   });
 
@@ -32,19 +32,5 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
   });
-
-  // insert some sample data if Person table is empty
-  if (Persons.count().run() === 0) {
-    Persons.insert([{
-      name: "Calvin",
-      age: 39
-    }, {
-      name: "Isaac",
-      age: 21
-    }, {
-      name: "Nicholas",
-      age: 21
-    }]).run();
-  }
 
 }

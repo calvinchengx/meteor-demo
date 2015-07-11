@@ -3,16 +3,20 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1>Welcome to Meteor chat!</h1>
 
   {{> hello}}
 </body>
 
 <template name="hello">
-  <button class="clickable">Click Me</button>
 
-  <!-- This button does not fire an event -->
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-  <p>Doubled counter: {{doubleNumber counter}}</p>
+
+
+  <textarea rows="4" cols="50">
+  </textarea>
+
+  <p>
+  <button class="clickable">Submit</button>
+  </p>
+
 </template>
