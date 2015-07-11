@@ -9,8 +9,9 @@
 </body>
 
 <template name="hello">
-
-
+  {{#each messages}}
+    <p>{{text}}</p>
+  {{/each}}
 
   <textarea rows="4" cols="50">
   </textarea>

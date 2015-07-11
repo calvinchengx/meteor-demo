@@ -5,11 +5,8 @@ if (Meteor.isClient) {
   Session.setDefault('counter', 0);
 
   Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    },
-    doubleNumber: function(num) {
-      return num * 2;
+    messages: function() {
+      return Messages.find();
     }
   });
 
