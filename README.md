@@ -1,4 +1,4 @@
-# A simple demo project demonstrating the use of meteor.js and rethinkdb
+# A simple demo project demonstrating the use of meteor.js and mongodb pub-sub
 
 ## Get started
 
@@ -6,17 +6,22 @@
 2. `cd ~/work`
 3. `meteor create chat`
 4. `cd chat`
+
+## TODO
+
+### Use rethinkdb instead?
+
 5. `meteor add simple:rethink`
 
-## Install rethinkdb
+### Install rethinkdb
 
 1. Run rethinkdb: `cd ~/work/chat; rethinkdb`
 
-## Start meteor
+### Start meteor
 
 1. `env RETHINK_URL=rethinkdb://localhost:28015/test meteor run`
 
-## Tooling (vim)
+## Tooling for VIM users
 
 1. Install tern_for_vim plugin
 2. Then, install meteor.js plugin for tern_for_vim via:
